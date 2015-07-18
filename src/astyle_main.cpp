@@ -69,7 +69,7 @@ void SetColor(unsigned short ForeColor=3,unsigned short BackGroundColor=0)
         HANDLE hCon = GetStdHandle(STD_OUTPUT_HANDLE);
         SetConsoleTextAttribute(hCon,ForeColor|(BackGroundColor*16));
     #endif
-};
+}
 void error(const char *why, const char* what)
 {
     SetColor(12,0);
