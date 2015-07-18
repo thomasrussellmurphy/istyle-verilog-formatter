@@ -81,7 +81,7 @@ COVERAGE_DIR=cov
 CC=g++
 FLAGS=-Wall -Wextra -pedantic
 INC=-I$(INCLUDE_DIR) -I$(SOURCE_DIR) $(addprefix -I,$(EXTRA_INCLUDES))
-CFLAGS=$(FLAGS) -std=c99 -fPIC $(INC) -c
+CFLAGS=$(FLAGS) -std=c++03  -fPIC $(INC) -c
 LFLAGS=$(FLAGS)
 
 # --- BUILD CONFIGURATIONS: Feel free to get creative with these if you'd like.
