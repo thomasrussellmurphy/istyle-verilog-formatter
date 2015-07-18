@@ -1,5 +1,4 @@
 // $Id: ASBeautifier.cpp,v 1.4 2004/02/06 08:37:56 devsolar Exp $
-// $Id: ASBeautifier.cpp,v 1.4 2004/02/06 08:37:56 devsolar Exp $
 // --------------------------------------------------------------------------
 //
 // Copyright (c) 1998,1999,2000,2001,2002 Tal Davidson. All rights reserved.
