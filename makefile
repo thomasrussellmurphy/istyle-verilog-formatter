@@ -3,10 +3,12 @@
 
 # cmd :   mingw32-make
 
-CPPFLAGS = -Wall  -Wno-sign-compare -fno-rtti -fno-exceptions
-LDFLAGS = -s
+CPPFLAGS = -Wall -Wno-sign-compare -fno-rtti -fno-exceptions
+LDFLAGS =
 
 OBJS = ASResource.o  ASStreamIterator.o ASBeautifier.o ASFormatter.o  astyle_main.o
+
+# Tasks
 
 all: clean astyle
 
@@ -17,4 +19,4 @@ astyle: $(OBJS)
 	g++ $(CPPFLAGS) -c $<
 
 clean:
-	rm -f *.o
+	rm -f *.o iStyle
