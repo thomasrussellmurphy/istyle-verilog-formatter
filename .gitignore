@@ -1,3 +1,6 @@
 # Starting simple
 *.o
 iStyle
+bin
+dep
+obj
