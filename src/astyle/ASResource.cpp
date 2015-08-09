@@ -49,18 +49,31 @@ const string ASResource::AS_SWITCH = string ("switch");
 
 const string ASResource::AS_DEFAULT = string("default");
 
+
 const string ASResource::PRO_CELLDEFINE            = string("`celldefine");
+
 const string ASResource::PRO_DEFAULT_NETTYPE       = string("`default_nettype");
+
 const string ASResource::PRO_DEFINE                = string("`define");
+
 const string ASResource::PRO_ELSE                  = string("`else");
+
 const string ASResource::PRO_ENDCELLDEFINE         = string("`endcelldefine");
+
 const string ASResource::PRO_ENDIF                 = string("`endif");
+
 const string ASResource::PRO_IFDEF                 = string("`ifdef");
+
 const string ASResource::PRO_INCLUDE               = string("`include");
+
 const string ASResource::PRO_NOUNCONNECTED_DRIVE   = string("`nounconnected_drive");
+
 const string ASResource::PRO_RESETALL              = string("`resetall");
+
 const string ASResource::PRO_TIMESCALE             = string("`timescale");
+
 const string ASResource::PRO_UNCONNECTED_DRIVE     = string("`unconnected_drive");
+
 const string ASResource::PRO_UNDEF                 = string("`undef");
 
 const string ASResource::AS_OPEN_BRACKET = string("{");
@@ -112,10 +125,16 @@ const string ASResource::AS_COLON = string(":");
 const string ASResource::AS_COMMA = string(",");
 const string ASResource::AS_SEMICOLON = string(";");
 
+
+
 const string ASResource::AS_INITIAL      = string("initial");
+
 const string ASResource::AS_FOREVER      = string("forever");
+
 const string ASResource::AS_ALWAYS       = string("always");
 const string ASResource::AS_REPEAT       = string("repeat");
+
+
 
 const string ASResource::AS_CASE         = string("case"     );
 const string ASResource::AS_CASEX        = string("casex"    );
@@ -138,6 +157,8 @@ const string ASResource::AS_ENDSPECIFY   = string("endspecify"    );
 const string ASResource::AS_ENDPRIMITIVE = string("endprimitive"  );
 //const string ASResource::AS_ENDMODULE    = string("endmodule"     );
 const string ASResource::AS_END          = string("end"           );
+
+
 
 const char   ASResource::PREPROCESSOR_CHAR ='`';
 

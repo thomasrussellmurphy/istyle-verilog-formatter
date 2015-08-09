@@ -83,9 +83,13 @@ class ASResource
         static const string AS_OPEN_BRACKET, AS_CLOSE_BRACKET;
         static const string AS_OPEN_LINE_COMMENT, AS_OPEN_COMMENT, AS_CLOSE_COMMENT;
         //  process
+
         static const string PRO_CELLDEFINE ,PRO_DEFAULT_NETTYPE ,PRO_DEFINE ,PRO_ELSE ;
+
         static const string PRO_ENDCELLDEFINE ,PRO_ENDIF ,PRO_IFDEF ,PRO_INCLUDE ;
+
         static const string PRO_NOUNCONNECTED_DRIVE ,PRO_RESETALL ,PRO_TIMESCALE ;
+
         static const string PRO_UNCONNECTED_DRIVE ,PRO_UNDEF;
 
         static const string AS_ASSIGN;
@@ -99,12 +103,20 @@ class ASResource
         static const string AS_NOT, AS_BIT_XOR, AS_BIT_OR, AS_BIT_AND, AS_BIT_NOT;
         static const string AS_QUESTION, AS_COLON, AS_SEMICOLON, AS_COMMA;
 
+
+
         static const string AS_BEGIN, AS_CASE,AS_CASEX ,AS_CASEZ,AS_FUNCTION,AS_FORK,AS_TABLE,AS_TASK,AS_SPECIFY,AS_PRIMITIVE; // add verilog
+
         static const string AS_END,   AS_ENDCASE,AS_ENDFUNCTION,AS_JOIN,AS_ENDTASK,AS_ENDTABLE,AS_ENDSPECIFY,AS_ENDPRIMITIVE;
+
         static const string AS_INITIAL,AS_FOREVER,AS_ALWAYS,AS_REPEAT;
 
+
+
     public:
+
         static const char PREPROCESSOR_CHAR;
+
 
 };
 
@@ -119,6 +131,7 @@ class ASBeautifier : protected ASResource
         virtual string nextLine();
         virtual string beautify(const string &line);
         void setTabIndentation(int length = 4, bool forceTabs = false);
+
         void setSpaceIndentation(int length = 4);
         void setMaxInStatementIndentLength(int max);
         void setMinConditionalIndentLength(int min);
@@ -131,9 +144,11 @@ class ASBeautifier : protected ASResource
         void setEmptyLineFill(bool state);
         void setPreprocessorIndent(bool state);
 
+
     protected:
         int getNextProgramCharDistance(const string &line, int i);
         bool isLegalNameChar(char ch) const;
+
         bool isInVerilogNum(const string &line,int i) const;
         bool isWhiteSpace(char ch) const;
         const string *findHeader(const string &line, int i,
@@ -155,7 +170,9 @@ class ASBeautifier : protected ASResource
         static vector<const string*> nonParenHeaders;
         static vector<const string*> preprocessorHeaders;
 
+
         static vector<const string*> verilogBlockBegin;
+
         static vector<const string*> verilogBlockEnd;
         static bool calledInitStatic;
 
@@ -193,6 +210,7 @@ class ASBeautifier : protected ASResource
         bool preprocessorIndent;
         bool isInConditional;
         bool isMinimalConditinalIndentSet;
+
         bool shouldForceTabIndentation;
         int minConditionalIndent;
         int parenDepth;
@@ -210,6 +228,8 @@ class ASBeautifier : protected ASResource
         bool backslashEndsPrevLine;
         int defineTabCount;
 
+
+
 };
 
 
@@ -224,6 +244,7 @@ class ASFormatter : public ASBeautifier
         void setBracketFormatMode(BracketMode mode);
         void setOperatorPaddingMode(bool mode);
         void setParenthesisPaddingMode(bool mode);
+
         void setBlockPaddingMode(bool mode);
         void setBreakOneLineBlocksMode(bool state);
         void setSingleStatementsMode(bool state);
@@ -231,6 +252,7 @@ class ASFormatter : public ASBeautifier
         void setBreakBlocksMode(bool state);
         void setBreakClosingHeaderBlocksMode(bool state);
         void setBreakElseIfsMode(bool state);
+
 
     private:
         void ASformatter(ASFormatter &copy); // not to be imlpemented
@@ -248,6 +270,7 @@ class ASFormatter : public ASBeautifier
         bool isOneLineBlockReached() const;
         void appendChar(char ch, bool canBreakLine = true);
         void appendCurrentChar(bool canBreakLine = true);
+
         void appendBlock(bool canBreakLine = true);
         void appendSequence(const string &sequence, bool canBreakLine = true);
         void appendSpacePad();
@@ -257,13 +280,17 @@ class ASFormatter : public ASBeautifier
 
         static vector<const string*> headers;
         static vector<const string*> nonParenHeaders;
+
         //used for verilog
         static vector<const string*> preprocessorHeaders;
+
 
         static vector<const string*> preCommandHeaders;
         static vector<const string*> operators;
         static vector<const string*> verilogBlockBegin;
+
         static vector<const string*> verilogBlockEnd;
+
 
         static bool calledInitStatic;
 
@@ -282,8 +309,10 @@ class ASFormatter : public ASBeautifier
         char quoteChar;
         int charNum;
         BracketMode bracketFormatMode;
+
         bool isVirgin;
         bool shouldPadOperators;
+
         bool shouldPadBlocks;
         bool shouldPadParenthesies;
         bool shouldConvertTabs;
@@ -305,10 +334,13 @@ class ASFormatter : public ASBeautifier
         bool shouldBreakOneLineStatements;
         bool shouldBreakLineAfterComments;
         bool shouldBreakElseIfs;
+
         bool passedSemicolon;
         bool passedColon;
         bool isImmediatelyPostComment;
+
         bool isImmediatelyPostLineComment;
+
 //      bool isImmediatelyPostEmptyBlock;
 
         bool shouldBreakBlocks;
@@ -319,12 +351,19 @@ class ASFormatter : public ASBeautifier
         bool prependEmptyLine;
         int previousReadyFormattedLineLength;
 
+
+
         bool isInHeader;
+
         bool isImmediatelyPostHeader;
+
         bool isRealBraceCh;
+
         bool isInsert;
         const string *vBlockBegin;
+
         const string *vBlockEnd;
+
 
 };
 
