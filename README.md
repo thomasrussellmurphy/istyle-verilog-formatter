@@ -1,6 +1,7 @@
 ## iStyle 1.20 (Fast and Free Automatic Formatter for Verilog Source Code) ##
 > (Created by haimag, Report Bugs: haimag@gmail.com)
 > (Thanks to Tal Davidson & Astyle)
+> Originally hosted at http://code.google.com/p/istyle-verilog-formatter before Google Code EOL
 
 ```
 Usage  :  iStyle [options] Foo.v  B*r.v  [...]
