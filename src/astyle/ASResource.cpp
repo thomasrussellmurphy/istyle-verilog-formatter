@@ -80,7 +80,7 @@ const string ASResource::AS_OPEN_BRACKET = string("{");
 const string ASResource::AS_CLOSE_BRACKET = string("}");
 const string ASResource::AS_OPEN_LINE_COMMENT = string("//");
 const string ASResource::AS_OPEN_COMMENT = string("/*");
-const  string ASResource::AS_CLOSE_COMMENT = string("*/");
+const string ASResource::AS_CLOSE_COMMENT = string("*/");
 
 const string ASResource::AS_ASSIGN = string("=");
 const string ASResource::AS_LS_ASSIGN = string("<=");
