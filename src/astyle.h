@@ -1,7 +1,7 @@
-// $Id: astyle.h,v 1.4 2004/02/06 08:37:56 devsolar Exp $
+// $Id: astyle.h, v 1.4 2004/02/06 08:37:56 devsolar Exp $
 // --------------------------------------------------------------------------
 //
-// Copyright (c) 1998,1999,2000,2001,2002 Tal Davidson. All rights reserved.
+// Copyright (c) 1998, 1999, 2000, 2001, 2002 Tal Davidson. All rights reserved.
 //
 // compiler_defines.h
 // by Tal Davidson (davidsont@bigfoot.com)
@@ -35,7 +35,6 @@
 #include <string>
 #include <vector>
 
-
 /* The enums below ave been moved up from inside the namespace astyle, since they
    for some strange reason are not recognized by 'vectors' in Microsoft Visual C++ 5
    when they are part of a namespace!!! There was no such problem with GNU's g++ compiler.
@@ -45,7 +44,6 @@ enum BracketType   { NULL_TYPE = 0,
                      COMMAND_TYPE = 2,
 
                      SINGLE_LINE_TYPE = 8};
-
 
 void error(const char *why, const char* what);
 
@@ -78,45 +76,40 @@ class ASResource
         static const string AS_IF, AS_ELSE;
         static const string AS_WHILE;
         static const string AS_FOR;
-        static const string AS_SWITCH,  AS_DEFAULT;
+        static const string AS_SWITCH, AS_DEFAULT;
 
         static const string AS_OPEN_BRACKET, AS_CLOSE_BRACKET;
         static const string AS_OPEN_LINE_COMMENT, AS_OPEN_COMMENT, AS_CLOSE_COMMENT;
         //  process
 
-        static const string PRO_CELLDEFINE ,PRO_DEFAULT_NETTYPE ,PRO_DEFINE ,PRO_ELSE ;
+        static const string PRO_CELLDEFINE, PRO_DEFAULT_NETTYPE, PRO_DEFINE, PRO_ELSE;
 
-        static const string PRO_ENDCELLDEFINE ,PRO_ENDIF ,PRO_IFDEF ,PRO_INCLUDE ;
+        static const string PRO_ENDCELLDEFINE, PRO_ENDIF, PRO_IFDEF, PRO_INCLUDE;
 
-        static const string PRO_NOUNCONNECTED_DRIVE ,PRO_RESETALL ,PRO_TIMESCALE ;
+        static const string PRO_NOUNCONNECTED_DRIVE, PRO_RESETALL, PRO_TIMESCALE;
 
-        static const string PRO_UNCONNECTED_DRIVE ,PRO_UNDEF;
+        static const string PRO_UNCONNECTED_DRIVE, PRO_UNDEF;
 
         static const string AS_ASSIGN;
-        static const string AS_LS_ASSIGN,AS_EQUAL_EQUAL,AS_NOT_EQUAL_EQUAL;
-        static const string AS_BITNOT_AND,AS_BITNOT_OR,AS_BITNOT_XNOR ,AS_NOT_XNOR;
+        static const string AS_LS_ASSIGN, AS_EQUAL_EQUAL, AS_NOT_EQUAL_EQUAL;
+        static const string AS_BITNOT_AND, AS_BITNOT_OR, AS_BITNOT_XNOR, AS_NOT_XNOR;
 
-        static const string AS_EQUAL,  AS_NOT_EQUAL, AS_GR_EQUAL,  AS_GR_GR;
-        static const string AS_LS_EQUAL,  AS_LS_LS,  AS_AND, AS_OR;
-        static const string  AS_PAREN_PAREN, AS_BLPAREN_BLPAREN;
-        static const string AS_PLUS, AS_MINUS, AS_MULT, AS_DIV, AS_MOD, AS_GR, AS_LS;
+        static const string AS_EQUAL, AS_NOT_EQUAL, AS_GR_EQUAL, AS_GR_GR;
+        static const string AS_LS_EQUAL, AS_LS_LS, AS_AND, AS_OR;
+        static const string AS_PAREN_PAREN, AS_BLPAREN_BLPAREN;
+        static const string AS_PLUS, AS_MINUS, AS_MULT, AS_EXP, AS_DIV, AS_MOD, AS_GR, AS_LS;
         static const string AS_NOT, AS_BIT_XOR, AS_BIT_OR, AS_BIT_AND, AS_BIT_NOT;
         static const string AS_QUESTION, AS_COLON, AS_SEMICOLON, AS_COMMA;
 
+        static const string AS_BEGIN, AS_CASE, AS_CASEX, AS_CASEZ, AS_FUNCTION, AS_FORK, AS_TABLE, AS_TASK, AS_SPECIFY, AS_PRIMITIVE; // add verilog
 
+        static const string AS_END, AS_ENDCASE, AS_ENDFUNCTION, AS_JOIN, AS_ENDTASK, AS_ENDTABLE, AS_ENDSPECIFY, AS_ENDPRIMITIVE;
 
-        static const string AS_BEGIN, AS_CASE,AS_CASEX ,AS_CASEZ,AS_FUNCTION,AS_FORK,AS_TABLE,AS_TASK,AS_SPECIFY,AS_PRIMITIVE; // add verilog
-
-        static const string AS_END,   AS_ENDCASE,AS_ENDFUNCTION,AS_JOIN,AS_ENDTASK,AS_ENDTABLE,AS_ENDSPECIFY,AS_ENDPRIMITIVE;
-
-        static const string AS_INITIAL,AS_FOREVER,AS_ALWAYS,AS_REPEAT;
-
-
+        static const string AS_INITIAL, AS_FOREVER, AS_ALWAYS, AS_REPEAT;
 
     public:
 
         static const char PREPROCESSOR_CHAR;
-
 
 };
 
@@ -144,12 +137,11 @@ class ASBeautifier : protected ASResource
         void setEmptyLineFill(bool state);
         void setPreprocessorIndent(bool state);
 
-
     protected:
         int getNextProgramCharDistance(const string &line, int i);
         bool isLegalNameChar(char ch) const;
 
-        bool isInVerilogNum(const string &line,int i) const;
+        bool isInVerilogNum(const string &line, int i) const;
         bool isWhiteSpace(char ch) const;
         const string *findHeader(const string &line, int i,
                                  const vector<const string*> &possibleHeaders,
@@ -169,7 +161,6 @@ class ASBeautifier : protected ASResource
         static vector<const string*> headers;
         static vector<const string*> nonParenHeaders;
         static vector<const string*> preprocessorHeaders;
-
 
         static vector<const string*> verilogBlockBegin;
 
@@ -228,10 +219,7 @@ class ASBeautifier : protected ASResource
         bool backslashEndsPrevLine;
         int defineTabCount;
 
-
-
 };
-
 
 class ASFormatter : public ASBeautifier
 {
@@ -252,7 +240,6 @@ class ASFormatter : public ASBeautifier
         void setBreakBlocksMode(bool state);
         void setBreakClosingHeaderBlocksMode(bool state);
         void setBreakElseIfsMode(bool state);
-
 
     private:
         void ASformatter(ASFormatter &copy); // not to be imlpemented
@@ -284,13 +271,11 @@ class ASFormatter : public ASBeautifier
         //used for verilog
         static vector<const string*> preprocessorHeaders;
 
-
         static vector<const string*> preCommandHeaders;
         static vector<const string*> operators;
         static vector<const string*> verilogBlockBegin;
 
         static vector<const string*> verilogBlockEnd;
-
 
         static bool calledInitStatic;
 
@@ -351,8 +336,6 @@ class ASFormatter : public ASBeautifier
         bool prependEmptyLine;
         int previousReadyFormattedLineLength;
 
-
-
         bool isInHeader;
 
         bool isImmediatelyPostHeader;
@@ -364,9 +347,7 @@ class ASFormatter : public ASBeautifier
 
         const string *vBlockEnd;
 
-
 };
-
 
 #ifdef USES_NAMESPACE
 }

@@ -40,7 +40,6 @@
 #include <algorithm>
 #include <iostream>
 
-
 #define INIT_CONTAINER(container, value)     {if ( (container) != NULL ) delete (container); (container) = (value); }
 #define DELETE_CONTAINER(container)          {if ( (container) != NULL ) delete (container) ; }
 #define IS_A(a,b)                            ( ((a) & (b)) == (b))
@@ -50,7 +49,6 @@ using namespace std;
 namespace astyle
 {
 #endif
-
 
 bool ASFormatter::calledInitStatic = false;
 vector<const string*> ASFormatter::headers;
@@ -109,7 +107,6 @@ void ASFormatter::staticInit()
     headers.push_back(&AS_CASEZ);
     headers.push_back(&AS_CASEX);
 
-
     headers.push_back(&AS_INITIAL);
     headers.push_back(&AS_FOREVER);
 
@@ -164,6 +161,7 @@ void ASFormatter::staticInit()
     operators.push_back(&AS_AND);
     operators.push_back(&AS_OR);
 
+    operators.push_back(&AS_EXP);
     operators.push_back(&AS_PLUS);
     operators.push_back(&AS_MINUS);
     operators.push_back(&AS_MULT);
@@ -181,7 +179,6 @@ void ASFormatter::staticInit()
     operators.push_back(&AS_BIT_XOR);
 
     operators.push_back(&AS_COMMA);
-
 
     verilogBlockBegin.push_back(&AS_FORK      );
     verilogBlockBegin.push_back(&AS_TABLE     );
@@ -287,7 +284,6 @@ string ASFormatter::nextLine()
 
         vBlockBegin = NULL;
         vBlockEnd   = NULL;
-
 
         if (shouldReparseCurrentChar)
         {
@@ -407,7 +403,6 @@ string ASFormatter::nextLine()
         if (currentChar == PREPROCESSOR_CHAR && ( findHeader(preprocessorHeaders)!=NULL))
             isInPreprocessor = true;
 
-
         if (isInPreprocessor)
         {
             appendCurrentChar();
@@ -450,7 +445,7 @@ string ASFormatter::nextLine()
             // But treat else if() as a special case which should not be broken!
             if (shouldBreakOneLineStatements)
             {
-                // if may break 'else if()'s, ythen simply break the line
+                // if may break 'else if()'s, then simply break the line
                 if (shouldBreakElseIfs)
                     isInLineBreak = true;
                 else
@@ -465,7 +460,6 @@ string ASFormatter::nextLine()
 
                     if (!isInElseIf)
                         isInLineBreak = true;  ////BUGFIX: SHOULD NOT BE breakLine() !!!
-
 
                     // add by renqh, insert 'begin' , changed '   if(1) a; ' to ' if(1) begin a;
                     if(shouldPadBlocks && !isInElseIf )
@@ -511,8 +505,6 @@ string ASFormatter::nextLine()
 
         //handle verilogBlock +
 
-
-
         if (currentChar == '{' )
         {
             isRealBraceCh = true ;
@@ -527,7 +519,7 @@ string ASFormatter::nextLine()
         {
             if(currentChar=='e' || currentChar=='j' ) // join end endtable endspecify
             {
-                vBlockEnd= findHeader(verilogBlockEnd);
+                vBlockEnd = findHeader(verilogBlockEnd);
                 if (vBlockEnd )
                 {
                     currentChar = '}';
@@ -720,7 +712,6 @@ string ASFormatter::nextLine()
             continue;
         }
 
-
         //}
 
         if (previousNonWSChar == '}' || currentChar == ';')
@@ -766,8 +757,6 @@ string ASFormatter::nextLine()
                 passedColon = true;
             }
         }
-
-
 
         if (currentChar == '?')
         {
@@ -875,7 +864,6 @@ string ASFormatter::nextLine()
 
 }
 
-
 /**
 * check if there are any indented lines ready to be read by nextLine()
 *
@@ -914,7 +902,6 @@ void ASFormatter::setBracketFormatMode(BracketMode mode)
 {
     bracketFormatMode = mode;
 }
-
 
 /**
  * set 'else if()' breaking mode
@@ -989,7 +976,6 @@ void ASFormatter::setTabSpaceConversionMode(bool state)
 {
     shouldConvertTabs = state;
 }
-
 
 /**
  * set option to break unrelated blocks of code with empty lines.
@@ -1113,7 +1099,6 @@ bool ASFormatter::getNextChar()
                 )
             previousCommandChar = previousNonWSChar;
     }
-
 
     int currentLineLength = currentLine.length();
 
@@ -1322,8 +1307,6 @@ BracketType ASFormatter::getBracketType() const
     return COMMAND_TYPE;
 }
 
-
-
 /**
  * check if the currently reached '-' character is
  * a urinary minus
@@ -1339,7 +1322,6 @@ bool ASFormatter::isUrinaryMinus() const
              && previousCommandChar != ')'
              && previousCommandChar != ']' );
 }
-
 
 /**
  * check if the currently reached '-' or '+' character is
@@ -1437,7 +1419,6 @@ bool ASFormatter::isOneLineBlockReached() const
     return false;
 }
 
-
 /**
  * check if one of a set of headers has been reached in the
  * current position of the current line.
@@ -1451,10 +1432,7 @@ const string *ASFormatter::findHeader(const vector<const string*> &headers, bool
     return ASBeautifier::findHeader(currentLine, charNum, headers, checkBoundry);
 }
 
-
-
 #ifdef USES_NAMESPACE
 }
 #endif
-
 

@@ -40,16 +40,12 @@
 #include <algorithm>
 #include <iostream>
 
-
 #define INIT_CONTAINER(container, value)     {if ( (container) != NULL ) delete (container); (container) = (value); }
 #define DELETE_CONTAINER(container)          {if ( (container) != NULL ) delete (container) ; }
 
 #ifdef USES_NAMESPACE
 using namespace std;
 #endif
-
-
-
 
 #ifdef USES_NAMESPACE
 namespace astyle
@@ -315,11 +311,7 @@ void ASBeautifier::init()
     isInDefineDefinition = false;
     defineTabCount = 0;
 
-
 }
-
-
-
 
 /**
 * indent using one tab per indentation
@@ -524,8 +516,6 @@ string ASBeautifier::beautify(const string &originalLine)
     vBlockBegin = NULL;
     vBlockEnd   = NULL;
 
-
-
     // handle and remove white spaces around the line:
     // If not in comment, first find out size of white space before line,
     // so that possible comments starting in the line continue in
@@ -548,7 +538,6 @@ string ASBeautifier::beautify(const string &originalLine)
         line = originalLine.substr(trimSize);
     }
 
-
     if (line.length() == 0)
     {
         if (emptyLineFill)
@@ -565,7 +554,6 @@ string ASBeautifier::beautify(const string &originalLine)
         if (line[0] == PREPROCESSOR_CHAR)
         {
             string preproc = trim(string(line.c_str() + 1));
-
 
             // When finding a multi-lined #define statement, the original beautifier
             // 1. sets its isInDefineDefinition flag
@@ -708,7 +696,6 @@ string ASBeautifier::beautify(const string &originalLine)
         ch = tempCh;
 
         outBuffer.append(1, ch);
-
 
         if (isWhiteSpace(ch))
             continue;
@@ -924,7 +911,6 @@ string ASBeautifier::beautify(const string &originalLine)
                     }
                 }
 
-
                 headerStack->push_back(newHeader);
                 if (indexOf(nonParenHeaders, newHeader) == -1)
                 {
@@ -974,7 +960,6 @@ string ASBeautifier::beautify(const string &originalLine)
         if ((ch == ';'  || (parenDepth>0 && ch == ','))  && !inStatementIndentStackSizeStack->empty())
             while (inStatementIndentStackSizeStack->back() + (parenDepth>0 ? 1 : 0)  < inStatementIndentStack->size())
                 inStatementIndentStack->pop_back();
-
 
         // handle ends of statements
         if ( (ch == ';' && parenDepth == 0) || ch == '}'/* || (ch == ',' && parenDepth == 0)*/)
@@ -1066,15 +1051,12 @@ string ASBeautifier::beautify(const string &originalLine)
         }
     }
 
-
     // indent #define lines with one less tab
     //if (isInDefine)
     //    tabCount -= defineTabCount-1;
 
-
     vBlockBegin = findHeader(outBuffer, 0, verilogBlockBegin);
     vBlockEnd   = findHeader(outBuffer, 0, verilogBlockEnd);
-
 
     if (!lineStartsInComment
             && !blockIndent
@@ -1108,7 +1090,6 @@ string ASBeautifier::beautify(const string &originalLine)
         if (vBlockEnd!=NULL||vBlockBegin!=NULL)
             tabCount++;
 
-
     if (isInDefine)
     {
         if (outBuffer[0] == PREPROCESSOR_CHAR)
@@ -1135,7 +1116,6 @@ string ASBeautifier::beautify(const string &originalLine)
     if (tabCount < 0)
         tabCount = 0;
 
-
     // finally, insert indentations into begining of line
 
     prevFinalLineSpaceTabCount = spaceTabCount;
@@ -1154,7 +1134,6 @@ string ASBeautifier::beautify(const string &originalLine)
 
     return outBuffer;
 }
-
 
 string ASBeautifier::preLineWS(int spaceTabCount, int tabCount)
 {
@@ -1205,8 +1184,6 @@ void ASBeautifier::registerInStatementIndent(const string &line, int i, int spac
     if (i + nextNonWSChar > maxInStatementIndent)
         inStatementIndent =  indentLength*2 + spaceTabCount;
 
-
-
     if (!inStatementIndentStack->empty() &&
             inStatementIndent < inStatementIndentStack->back())
         inStatementIndent = inStatementIndentStack->back();
@@ -1256,7 +1233,6 @@ int ASBeautifier::getNextProgramCharDistance(const string &line, int i)
     return charDistance;
 }
 
-
 /**
 * check if a specific character can be used in a legal variable/method/class name
 *
@@ -1295,7 +1271,6 @@ bool ASBeautifier::isInVerilogNum(const string &line,int i) const
     }
     return isNum;
 }
-
 
 /**
 * check if a specific line position contains a header, out of several possible headers.
@@ -1358,7 +1333,6 @@ const string *ASBeautifier::findHeader(const string &line, int i, const vector<c
     return NULL;
 }
 
-
 /**
 * check if a specific character can be used in a legal variable/method/class name
 *
@@ -1413,5 +1387,4 @@ string ASBeautifier::trim(const string &str)
 #ifdef USES_NAMESPACE
 }
 #endif
-
 
