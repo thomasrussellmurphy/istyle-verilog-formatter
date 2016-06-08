@@ -57,7 +57,7 @@ using namespace astyle;
 ostream *_err = &cerr;
 string _suffix = ".orig";
 
-const string _version = "1.20";
+const string _version = "1.21";
 bool shouldBackupFile = true;
 
 // --------------------------------------------------------------------------
