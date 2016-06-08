@@ -59,7 +59,7 @@ vector<const string*> ASBeautifier::nonParenHeaders;
 
 vector<const string*> ASBeautifier::verilogBlockBegin;
 vector<const string*> ASBeautifier::verilogBlockEnd;
-    vector<const string*> ASBeautifier::preprocessorHeaders;
+vector<const string*> ASBeautifier::preprocessorHeaders;
 
 /*
 * initialize the static vars
@@ -89,6 +89,7 @@ void ASBeautifier::initStatic()
     verilogBlockBegin.push_back(&AS_CASE      );
     verilogBlockBegin.push_back(&AS_CASEX     );
     verilogBlockBegin.push_back(&AS_CASEZ     );
+	verilogBlockBegin.push_back(&AS_GENERATE  );
     verilogBlockBegin.push_back(&AS_FUNCTION  );
     verilogBlockBegin.push_back(&AS_FORK      );
     verilogBlockBegin.push_back(&AS_TABLE     );
@@ -99,6 +100,7 @@ void ASBeautifier::initStatic()
     verilogBlockBegin.push_back(&AS_BEGIN     );
 
     verilogBlockEnd.push_back(&AS_ENDCASE      );
+	verilogBlockEnd.push_back(&AS_ENDGENERATE  );
     verilogBlockEnd.push_back(&AS_ENDFUNCTION  );
     verilogBlockEnd.push_back(&AS_JOIN         );
     verilogBlockEnd.push_back(&AS_ENDTASK      );
@@ -769,10 +771,10 @@ string ASBeautifier::beautify(const string &originalLine)
         // join end endtable endspecify
         if(ch == '{')        ch = '[';
         else if(ch == '}')   ch = ']';
-        else if(ch=='e' || ch=='j' )
+        else {
               vBlockEnd   = findHeader(line, i, verilogBlockEnd);
-        else if(ch=='c' ||ch=='f' || ch=='t' || ch=='s'|| ch=='m' || ch=='p' ||ch=='b' )
               vBlockBegin = findHeader(line, i, verilogBlockBegin);
+		}
 
         if(vBlockEnd != NULL)
         {
