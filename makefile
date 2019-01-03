@@ -79,7 +79,7 @@ COVERAGE_DIR=cov
 # --- COMPILATION FLAGS: Things you may want/need to configure, but I've put
 # them at sane defaults.
 CC=g++
-FLAGS=-Wall -Wextra -pedantic
+FLAGS=-Wall -Wextra -pedantic -O2
 INC=-I$(INCLUDE_DIR) -I$(SOURCE_DIR) $(addprefix -I,$(EXTRA_INCLUDES))
 CFLAGS=$(FLAGS) -std=c++03  -fPIC $(INC) -c
 LFLAGS=$(FLAGS)
