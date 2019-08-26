@@ -570,6 +570,17 @@ bool isWriteable( char const * const filename )
     out.close();
     return true;
 }
+
+void formatUsingStreams(ASFormatter &formatter, istream *in, ostream *out) {
+    formatter.init(new ASStreamIterator(in));
+    while (formatter.hasMoreLines())
+    {
+        *out << formatter.nextLine();
+        if (formatter.hasMoreLines())
+            *out << endl;
+    }
+}
+
 int main(int argc, char *argv[])
 {
     ASFormatter formatter;
@@ -683,8 +694,7 @@ int main(int argc, char *argv[])
     // if no files have been given, use cin for input and cout for output
     if (fileNameVector.empty() )
     {
-        printHelpSimple(1);
-
+        formatUsingStreams(formatter, &cin, &cout);
     }
     else
     {
@@ -724,13 +734,7 @@ int main(int argc, char *argv[])
                 exit(1);
             }
 
-            formatter.init( new ASStreamIterator(&in) );
-            while (formatter.hasMoreLines() )
-            {
-                out << formatter.nextLine();
-                if (formatter.hasMoreLines())
-                    out << endl;
-            }
+            formatUsingStreams(formatter, &in, &out);
 
             out.flush();
             out.close();
