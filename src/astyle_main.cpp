@@ -355,7 +355,7 @@ bool parseOptions(ASFormatter &formatter,
     return ok;
 }
 
-void printHelpTitle()
+void printTitle()
 {
     cout << endl;
 
@@ -372,7 +372,7 @@ void printHelpTitle()
 }
 void printHelpSimple(int isGetchar=0)
 {
-
+    printTitle();
     SetColor(14,0);
     cout << endl;
     cout << "Usage  :  iStyle [options] Foo.v  B*r.v  [...]\n";
@@ -394,7 +394,7 @@ void printHelpSimple(int isGetchar=0)
 
 void printHelpFull()
 {
-
+    printTitle();
     SetColor(14,0);
     cout << endl;
     cout << "Usage  :  iStyle [options] Foo.v  B*r.v  [...]\n";
@@ -595,8 +595,6 @@ int main(int argc, char *argv[])
     _err = &cerr;
     _suffix = ".orig";
 
-    printHelpTitle();
-
     // manage flags
     for (int i=1; i<argc; i++)
     {
@@ -699,6 +697,8 @@ int main(int argc, char *argv[])
     }
     else
     {
+        printTitle();
+
         // indent the given files
         for (int i=0; i<fileNameVector.size(); i++)
         {
