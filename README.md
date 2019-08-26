@@ -52,7 +52,7 @@ and NO formatting.
 ```
     -s   OR   -s#   OR   --indent=spaces=#
     Indent using # spaces per indent. Not specifying #
-    will result in a default of 4 spacec per indent.
+    will result in a default of 4 spaces per indent.
 
     -t   OR   -t#   OR   --indent=tab=#
     Indent using tab characters, assuming that each
