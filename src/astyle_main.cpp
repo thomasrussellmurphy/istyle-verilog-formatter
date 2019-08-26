@@ -283,7 +283,7 @@ void importOptions(istream &in, vector<string> &optionsVector)
     char ch;
     string currentToken;
 
-    while (in)
+    while (in.peek() != istream::traits_type::eof())
     {
         currentToken = "";
         do
@@ -292,12 +292,15 @@ void importOptions(istream &in, vector<string> &optionsVector)
 
             // treat '#' as line comments
             if (ch == '#')
-                while (in)
+            {
+                while (in.peek() != istream::traits_type::eof())
                 {
                     in.get(ch);
                     if (ch == '\n')
                         break;
                 }
+                continue;
+            }
 
             // break options on spaces, tabs or new-lines
             if (ch == ' ' || ch == '\t' || ch == '\n' || ch == '\r')
@@ -306,7 +309,7 @@ void importOptions(istream &in, vector<string> &optionsVector)
                 currentToken.append(1, ch);
 
         }
-        while (in);
+        while (in.peek() != istream::traits_type::eof());
 
         if (currentToken.length() != 0)
             optionsVector.push_back(currentToken);
