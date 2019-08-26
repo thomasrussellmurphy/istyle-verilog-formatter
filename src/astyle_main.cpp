@@ -668,6 +668,7 @@ int main(int argc, char *argv[])
             if (!ok)
             {
                 printHelpSimple();
+                exit(1);
             }
         }
     }
