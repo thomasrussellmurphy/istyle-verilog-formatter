@@ -355,7 +355,7 @@ bool parseOptions(ASFormatter &formatter,
     return ok;
 }
 
-void printHelpTitle()
+void printTitle()
 {
     cout << endl;
 
@@ -373,6 +373,7 @@ void printHelpTitle()
 
 void printHelpBase()
 {
+    printTitle();
     SetColor(14,0);
 
     cout << endl;
@@ -603,8 +604,6 @@ int main(int argc, char *argv[])
     _err = &cerr;
     _suffix = ".orig";
 
-    printHelpTitle();
-
     // manage flags
     for (int i=1; i<argc; i++)
     {
@@ -676,6 +675,7 @@ int main(int argc, char *argv[])
             if (!ok)
             {
                 printHelpSimple();
+                exit(1);
             }
         }
     }
@@ -706,6 +706,9 @@ int main(int argc, char *argv[])
     }
     else
     {
+        // Running in file-based mode, so can provide information on stdout
+        printTitle();
+
         // indent the given files
         for (int i=0; i<fileNameVector.size(); i++)
         {
