@@ -1,10 +1,18 @@
-## iStyle 1.21 (Fast and Free Automatic Formatter for Verilog Source Code) ##
-> (Created by haimag, Report Bugs: haimag@gmail.com)
-> (Thanks to Tal Davidson & Astyle)
+# iStyle 1.22 #
+## Fast and Free Automatic Formatter for Verilog Source Code ##
+```
+    Created by haimag
+    Thanks to Tal Davidson & Astyle
+    Report bugs https://github.com/thomasrussellmurphy/istyle-verilog-formatter/issues
+```
+
 > Originally hosted at http://code.google.com/p/istyle-verilog-formatter before Google Code EOL
 
 ```
-Usage  :  iStyle [options] Foo.v  B*r.v  [...]
+Usage:
+    iStyle [options] Foo.v  B*r.v  [...]
+    OR, use stdin/stdout
+    iStyle [options] <Foo.v >Foo_formatted.v
 
 When indenting a specific file, the resulting indented file RETAINS the
 original file-name. The original pre-indented file is renamed, with a

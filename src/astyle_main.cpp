@@ -57,7 +57,7 @@ using namespace astyle;
 ostream *_err = &cerr;
 string _suffix = ".orig";
 
-const string _version = "1.21";
+const string _version = "1.22";
 bool shouldBackupFile = true;
 
 // --------------------------------------------------------------------------
@@ -360,27 +360,37 @@ void printHelpTitle()
     cout << endl;
 
     SetColor(10,0);
-    cout << "iStyle " << _version;
+    cout << "iStyle " << _version << endl;
 
     SetColor(2,0);
-    cout <<  " (Fast and Free Automatic Formatter for Verilog Source Code)\n";
-    cout << "               (Created by haimag, Report Bugs: haimag@gmail.com)\n";
-    cout << "               (Thanks to Tal Davidson & Astyle)\n";
+    cout << "  Fast and Free Automatic Formatter for Verilog Source Code\n";
+    cout << "    Created by haimag\n";
+    cout << "    Thanks to Tal Davidson & Astyle\n";
+    cout << "    Report bugs https://github.com/thomasrussellmurphy/istyle-verilog-formatter/issues\n";
     cout << endl;
     SetColor(7,0);
-    //~ cout << endl;
 }
+
+void printHelpBase()
+{
+    SetColor(14,0);
+
+    cout << endl;
+    cout << "Usage:\n";
+    cout << "    iStyle [options] Foo.v  B*r.v  [...]\n";
+    cout << "    OR, use stdin/stdout\n";
+    cout << "    iStyle [options] <Foo.v >Foo_formatted.v\n";
+    cout << endl;
+}
+
 void printHelpSimple(int isGetchar=0)
 {
+    printHelpBase();
 
-    SetColor(14,0);
-    cout << endl;
-    cout << "Usage  :  iStyle [options] Foo.v  B*r.v  [...]\n";
-    cout << endl;
     SetColor(7,0);
     cout << "For help on options, type 'iStyle -h'" ;
 
-    if(isGetchar ==1 )
+    if(isGetchar == 1)
     {
         cout << ", Press ENTER to exit." << endl;
         getchar();
@@ -394,11 +404,8 @@ void printHelpSimple(int isGetchar=0)
 
 void printHelpFull()
 {
+    printHelpBase();
 
-    SetColor(14,0);
-    cout << endl;
-    cout << "Usage  :  iStyle [options] Foo.v  B*r.v  [...]\n";
-    cout << endl;
     SetColor(7,0);
     cout << "When indenting a specific file, the resulting indented file RETAINS the\n";
     cout << "original file-name. The original pre-indented file is renamed, with a\n";
@@ -552,6 +559,7 @@ void printHelpFull()
     SetColor(7,0);
     cout << endl;
 }
+
 bool isWriteable( char const * const filename )
 {
     std::ifstream in(filename);
