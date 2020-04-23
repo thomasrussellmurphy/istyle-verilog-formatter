@@ -82,11 +82,11 @@ class ASResource
         static const string AS_OPEN_LINE_COMMENT, AS_OPEN_COMMENT, AS_CLOSE_COMMENT;
         //  process
 
-        static const string PRO_CELLDEFINE, PRO_DEFAULT_NETTYPE, PRO_DEFINE, PRO_ELSE;
+        static const string PRO_CELLDEFINE, PRO_DEFAULT_NETTYPE, PRO_DEFINE, PRO_ELSE, PRO_ELSIF;
 
-        static const string PRO_ENDCELLDEFINE, PRO_ENDIF, PRO_IFDEF, PRO_INCLUDE;
+        static const string PRO_ENDCELLDEFINE, PRO_ENDIF, PRO_IFDEF, PRO_IFNDEF, PRO_INCLUDE;
 
-        static const string PRO_NOUNCONNECTED_DRIVE, PRO_RESETALL, PRO_TIMESCALE;
+        static const string PRO_NOUNCONNECTED_DRIVE, PRO_PROTECT, PRO_RESETALL, PRO_TIMESCALE;
 
         static const string PRO_UNCONNECTED_DRIVE, PRO_UNDEF;
 
