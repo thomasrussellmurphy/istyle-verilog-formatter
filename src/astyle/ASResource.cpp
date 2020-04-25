@@ -62,6 +62,8 @@ const string ASResource::PRO_ENDCELLDEFINE         = string("`endcelldefine");
 
 const string ASResource::PRO_ENDIF                 = string("`endif");
 
+const string ASResource::PRO_ENDPROTECT            = string("`endprotect");
+
 const string ASResource::PRO_IFDEF                 = string("`ifdef");
 
 const string ASResource::PRO_IFNDEF                = string("`ifndef");

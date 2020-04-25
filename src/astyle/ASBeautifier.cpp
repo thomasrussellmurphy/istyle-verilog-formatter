@@ -117,10 +117,12 @@ void ASBeautifier::initStatic()
     preprocessorHeaders.push_back(&PRO_ELSIF                );
     preprocessorHeaders.push_back(&PRO_ENDCELLDEFINE        );
     preprocessorHeaders.push_back(&PRO_ENDIF                );
+    preprocessorHeaders.push_back(&PRO_ENDPROTECT           );
     preprocessorHeaders.push_back(&PRO_IFDEF                );
     preprocessorHeaders.push_back(&PRO_IFNDEF               );
     preprocessorHeaders.push_back(&PRO_INCLUDE              );
     preprocessorHeaders.push_back(&PRO_NOUNCONNECTED_DRIVE  );
+    preprocessorHeaders.push_back(&PRO_PROTECT              );
     preprocessorHeaders.push_back(&PRO_RESETALL             );
     preprocessorHeaders.push_back(&PRO_TIMESCALE            );
     preprocessorHeaders.push_back(&PRO_UNCONNECTED_DRIVE    );
