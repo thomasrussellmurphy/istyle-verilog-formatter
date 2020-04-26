@@ -56,15 +56,23 @@ const string ASResource::PRO_DEFINE                = string("`define");
 
 const string ASResource::PRO_ELSE                  = string("`else");
 
+const string ASResource::PRO_ELSIF                 = string("`elsif");
+
 const string ASResource::PRO_ENDCELLDEFINE         = string("`endcelldefine");
 
 const string ASResource::PRO_ENDIF                 = string("`endif");
 
+const string ASResource::PRO_ENDPROTECT            = string("`endprotect");
+
 const string ASResource::PRO_IFDEF                 = string("`ifdef");
+
+const string ASResource::PRO_IFNDEF                = string("`ifndef");
 
 const string ASResource::PRO_INCLUDE               = string("`include");
 
 const string ASResource::PRO_NOUNCONNECTED_DRIVE   = string("`nounconnected_drive");
+
+const string ASResource::PRO_PROTECT               = string("`protect");
 
 const string ASResource::PRO_RESETALL              = string("`resetall");
 
