@@ -1,4 +1,4 @@
-# iStyle 1.22 #
+# iStyle v1 #
 ## Fast and Free Automatic Formatter for Verilog Source Code ##
 ```
     Created by haimag
