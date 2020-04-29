@@ -1102,7 +1102,7 @@ bool ASFormatter::getNextChar()
             previousCommandChar = previousNonWSChar;
     }
 
-    int currentLineLength = currentLine.length();
+    unsigned int currentLineLength = currentLine.length();
 
     if (charNum+1 < currentLineLength
             && (!isWhiteSpace(peekNextChar()) || isInComment || isInLineComment))
@@ -1164,7 +1164,7 @@ bool ASFormatter::getNextChar()
 */
 void ASFormatter::trimNewLine()
 {
-    int len = currentLine.length();
+    unsigned int len = currentLine.length();
     charNum = 0;
 
     if (isInComment || isInPreprocessor)

@@ -177,7 +177,7 @@ class ASBeautifier : protected ASResource
         vector<int> *blockParenDepthStack;
 
         vector<int> *inStatementIndentStack;
-        vector<int> *inStatementIndentStackSizeStack;
+        vector<unsigned int> *inStatementIndentStackSizeStack;
         vector<int> *parenIndentStack;
 
         string indentString;
@@ -206,7 +206,7 @@ class ASBeautifier : protected ASResource
         int minConditionalIndent;
         int parenDepth;
         int indentLength;
-        int leadingWhiteSpaces;
+        unsigned int leadingWhiteSpaces;
         int maxInStatementIndent;
         char quoteChar;
         char prevNonSpaceCh;
@@ -292,7 +292,7 @@ class ASFormatter : public ASBeautifier
         char previousNonWSChar;
         char previousCommandChar;
         char quoteChar;
-        int charNum;
+        unsigned int charNum;
         BracketMode bracketFormatMode;
 
         bool isVirgin;

@@ -334,9 +334,7 @@ bool parseOptions(ASFormatter &formatter,
             ok &= parseOption(formatter, arg.substr(2), errorInfo);
         else if (arg[0] == '-')
         {
-            int i;
-
-            for (i=1; i < arg.length(); ++i)
+            for (unsigned int i=1; i < arg.length(); ++i)
             {
                 if (isalpha(arg[i]) && i > 1)
                 {
@@ -713,7 +711,7 @@ int main(int argc, char *argv[])
         printTitle();
 
         // indent the given files
-        for (int i=0; i<fileNameVector.size(); i++)
+        for (unsigned int i=0; i<fileNameVector.size(); i++)
         {
             string originalFileName = fileNameVector[i];
             string inFileName = originalFileName + _suffix;

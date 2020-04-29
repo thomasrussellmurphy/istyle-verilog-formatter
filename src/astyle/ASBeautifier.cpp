@@ -189,7 +189,7 @@ ASBeautifier::ASBeautifier(const ASBeautifier &other)
     inStatementIndentStack = new vector<int>;
     *inStatementIndentStack = *other.inStatementIndentStack;
 
-    inStatementIndentStackSizeStack = new vector<int>;
+    inStatementIndentStackSizeStack = new vector<unsigned int>;
     *inStatementIndentStackSizeStack = *other.inStatementIndentStackSizeStack;
 
     parenIndentStack = new vector<int>;
@@ -284,7 +284,7 @@ void ASBeautifier::init()
     INIT_CONTAINER( blockParenDepthStack, new vector<int> );
 
     INIT_CONTAINER( inStatementIndentStack, new vector<int> );
-    INIT_CONTAINER( inStatementIndentStackSizeStack, new vector<int> );
+    INIT_CONTAINER( inStatementIndentStackSizeStack, new vector<unsigned int> );
     inStatementIndentStackSizeStack->push_back(0);
     INIT_CONTAINER( parenIndentStack, new vector<int> );
 
@@ -406,7 +406,7 @@ void ASBeautifier::setBlockIndent(bool state)
 */
 void ASBeautifier::setSwitchIndent(bool state)
 {
-    ;// switchIndent = state;
+    ;//switchIndent = state;
 }
 
 /**
@@ -532,7 +532,9 @@ string ASBeautifier::beautify(const string &originalLine)
     }
     else
     {
-        int trimSize;
+        // Search to determine the size to trim
+        unsigned int trimSize;
+
         for (trimSize=0;
                 trimSize < originalLine.length() && trimSize<leadingWhiteSpaces && originalLine[trimSize] <= 0x20 ;
                 trimSize++)
@@ -606,7 +608,7 @@ string ASBeautifier::beautify(const string &originalLine)
 
             else if (preproc.COMPARE(0, 5, string("endif")) == 0)
             {
-                int stackLength;
+                unsigned int stackLength;
                 ASBeautifier *beautifier;
 
                 if (!waitingBeautifierStackLengthStack->empty())
@@ -836,7 +838,7 @@ string ASBeautifier::beautify(const string &originalLine)
 
                 if (!inStatementIndentStackSizeStack->empty())
                 {
-                    int previousIndentStackSize = inStatementIndentStackSizeStack->back();
+                    unsigned int previousIndentStackSize = inStatementIndentStackSizeStack->back();
                     inStatementIndentStackSizeStack->pop_back();
                     while (previousIndentStackSize < inStatementIndentStack->size())
                         inStatementIndentStack->pop_back();
