@@ -365,7 +365,8 @@ string ASFormatter::nextLine()
         {
             ////// DEVEL: if (isLegalNameChar(previousChar) && isLegalNameChar(peekNextChar()))
             if(previousChar == '[' || peekNextChar() == ']' 
-                || previousChar == '(' || peekNextChar() == ')')
+                || previousChar == '(' || peekNextChar() == ')'
+                || (peekPreviousChar() == '#' && peekNextChar() == '('))
             {
                 continue;
             }
@@ -649,7 +650,7 @@ string ASFormatter::nextLine()
         if ( ( (previousCommandChar == '{' )
                 || (previousCommandChar == '}'
                     && !isPreviousCharPostComment    // <-- Fixes wrongly appended newlines after '}' immediately after comments... 10/9/1999
-                    && peekNextChar() != ' '))
+                    && peekNextChar(true) != ' '))
                 &&  (shouldBreakOneLineBlocks  ) )
         {
             isCharImmediatelyPostOpenBlock = (previousCommandChar == '{');
@@ -769,6 +770,20 @@ string ASFormatter::nextLine()
         {
             if(!isInVerilogNum(currentLine,charNum))
                 foundQuestionMark = true;
+        }
+
+        if(currentChar == '#' && peekPreviousChar(true) != ' ' && peekNextChar() == '(')
+        {
+            isInLineBreak = true;
+            appendCurrentChar();
+            continue;
+        }
+
+        if(currentChar == '(' && peekPreviousChar() == '#' && peekNextChar() != ' ')
+        {
+            appendCurrentChar();
+            breakLine();
+            continue;
         }
 
         if (shouldPadOperators)
@@ -1030,6 +1045,7 @@ void ASFormatter::goForward(int i)
 /**
 * peek at the next unread character.
 *
+* @param count_white_space false to omit white spaces when peek
 * @return     the next unread character.
 */
 char ASFormatter::peekNextChar(const bool count_white_space) const
@@ -1041,6 +1057,30 @@ char ASFormatter::peekNextChar(const bool count_white_space) const
     while (peekNum < len)
     {
         ch = currentLine[peekNum++];
+        if (count_white_space || !isWhiteSpace(ch))
+            return ch;
+    }
+
+    if (shouldConvertTabs && ch == '\t')
+        ch = ' ';
+
+    return ch;
+}
+
+/**
+* peek at the previous character.
+*
+* @param count_white_space false to omit white spaces when peek
+* @return     the previous character.
+*/
+char ASFormatter::peekPreviousChar(const bool count_white_space) const
+{
+    int peekNum = charNum - 1;
+    char ch = ' ';
+
+    while (peekNum >= 0)
+    {
+        ch = currentLine[peekNum--];
         if (count_white_space || !isWhiteSpace(ch))
             return ch;
     }

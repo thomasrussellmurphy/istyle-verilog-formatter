@@ -249,6 +249,7 @@ class ASFormatter : public ASBeautifier
         void goForward(int i);
         bool getNextChar();
         char peekNextChar(bool count_white_space = false) const;
+        char peekPreviousChar(bool count_white_space = false) const;
         bool isBeforeComment() const;
         void trimNewLine();
         BracketType getBracketType() const;
