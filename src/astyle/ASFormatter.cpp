@@ -364,6 +364,11 @@ string ASFormatter::nextLine()
         if (isWhiteSpace(currentChar) || isInPreprocessor)
         {
             ////// DEVEL: if (isLegalNameChar(previousChar) && isLegalNameChar(peekNextChar()))
+            if(previousChar == '[' || peekNextChar() == ']' 
+                || previousChar == '(' || peekNextChar() == ')')
+            {
+                continue;
+            }
             appendCurrentChar();
             continue;
         }
