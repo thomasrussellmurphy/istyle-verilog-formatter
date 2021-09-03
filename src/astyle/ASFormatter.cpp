@@ -1027,7 +1027,7 @@ void ASFormatter::goForward(int i)
 *
 * @return     the next unread character.
 */
-char ASFormatter::peekNextChar() const
+char ASFormatter::peekNextChar(const bool count_white_space) const
 {
     int peekNum = charNum + 1;
     int len = currentLine.length();
@@ -1036,7 +1036,7 @@ char ASFormatter::peekNextChar() const
     while (peekNum < len)
     {
         ch = currentLine[peekNum++];
-        if (!isWhiteSpace(ch))
+        if (count_white_space || !isWhiteSpace(ch))
             return ch;
     }
 
@@ -1264,7 +1264,8 @@ void ASFormatter::appendSequence(const string &sequence, bool canBreakLine)
 void ASFormatter::appendSpacePad()
 {
     int len = formattedLine.length();
-    if (len == 0 || !isWhiteSpace(formattedLine[len-1]))
+    if (peekNextChar(true) != ' '
+        && (len == 0 || !isWhiteSpace(formattedLine[len-1])))
         formattedLine.append(1, ' ');
 }
 
