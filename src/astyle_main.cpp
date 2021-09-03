@@ -55,7 +55,7 @@ using namespace astyle;
 
 // default options:
 ostream *_err = &cerr;
-string _suffix = ".orig";
+string _suffix = ".tv";
 
 const string _version = "1.23";
 bool shouldBackupFile = true;
@@ -603,7 +603,7 @@ int main(int argc, char *argv[])
     bool shouldParseOptionsFile = true;
 
     _err = &cerr;
-    _suffix = ".orig";
+    _suffix = ".tv";
 
     // manage flags
     for (int i=1; i<argc; i++)
@@ -716,33 +716,33 @@ int main(int argc, char *argv[])
             string originalFileName = fileNameVector[i];
             string inFileName = originalFileName + _suffix;
 
-            if ( ! isWriteable(originalFileName.c_str()) )
-            {
-                error(string("Error: File '" + originalFileName ).c_str() ,
-                      "' does not exist, or is read-only.");
-                continue;
-            }
+            // if ( ! isWriteable(originalFileName.c_str()) )
+            // {
+            //     error(string("Error: File '" + originalFileName ).c_str() ,
+            //           "' does not exist, or is read-only.");
+            //     continue;
+            // }
 
             remove(inFileName.c_str());
 
-            if ( rename(originalFileName.c_str(), inFileName.c_str()) < 0)
-            {
-                error(string("Error: Could not rename " + originalFileName).c_str() ,
-                      string(" to " + inFileName).c_str());
-                exit(1);
-            }
+            // if ( rename(originalFileName.c_str(), inFileName.c_str()) < 0)
+            // {
+            //     error(string("Error: Could not rename " + originalFileName).c_str() ,
+            //           string(" to " + inFileName).c_str());
+            //     exit(1);
+            // }
 
-            ifstream in(inFileName.c_str());
+            ifstream in(originalFileName.c_str());
             if (!in)
             {
                 error("Could not open input file", inFileName.c_str());
                 exit(1);
             }
 
-            ofstream out(originalFileName.c_str());
+            ofstream out(inFileName.c_str());
             if (!out)
             {
-                error("Could not open output file", originalFileName.c_str());
+                error("Could not open output file", inFileName.c_str());
                 exit(1);
             }
 
@@ -752,10 +752,10 @@ int main(int argc, char *argv[])
             out.close();
             in.close();
 
-            if ( ! shouldBackupFile )
-            {
-                remove( inFileName.c_str() );
-            }
+            // if ( ! shouldBackupFile )
+            // {
+            //     remove( inFileName.c_str() );
+            // }
 
             // print
             SetColor(3,0);
