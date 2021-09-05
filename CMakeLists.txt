@@ -1,3 +1,28 @@
+# ----------------------
+# Usage
+# 1. cd to current dir(where CmakeLists.txt exists);
+# 2. create directory build;
+# 3. cd to build;
+# 4. run command: $cmake ..
+# 5. run command: $make
+# enjoy!
+
+# ----------------------
+# Using cmake-gui
+# 1. open cmake-gui window;
+# 2. click "Browse Source" and select current dir(where CmakeLists.txt exists);
+# 3. click "Browse Build" and select anywhere you want to put the build files;
+# 4. click "Configure" and select the compiler to use;
+# 5. click "Generate" and make files or nmake files(MSVC) will be generated in the build folder you have selected;
+# 6. go to your build folder or just click "Open Project";
+# 7. run make or build with Microsoft Visual Studio;
+# enjoy!
+
+# ----------------------
+# Tested on:
+# 1. Windows 10 with Microsoft Visual Studio 2019;
+# 2. Ubuntu 20.04 with gcc 10.0;
+
 cmake_minimum_required(VERSION 3.17)
 
 # ----------------------
