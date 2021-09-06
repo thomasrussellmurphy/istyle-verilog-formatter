@@ -94,7 +94,7 @@ class ASResource
         static const string AS_LS_ASSIGN, AS_EQUAL_EQUAL, AS_NOT_EQUAL_EQUAL;
         static const string AS_BITNOT_AND, AS_BITNOT_OR, AS_BITNOT_XNOR, AS_NOT_XNOR;
 
-        static const string AS_EQUAL, AS_NOT_EQUAL, AS_GR_EQUAL, AS_GR_GR;
+        static const string AS_EQUAL, AS_NOT_EQUAL, AS_GR_EQUAL, AS_GR_GR, AS_INDEX_ADD, AS_INDEX_MINUS;
         static const string AS_LS_EQUAL, AS_LS_LS, AS_AND, AS_OR;
         static const string AS_PAREN_PAREN, AS_BLPAREN_BLPAREN;
         static const string AS_PLUS, AS_MINUS, AS_MULT, AS_EXP, AS_DIV, AS_MOD, AS_GR, AS_LS;

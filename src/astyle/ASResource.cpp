@@ -105,6 +105,8 @@ const string ASResource::AS_GR_EQUAL = string(">=");
 const string ASResource::AS_GR_GR = string(">>");
 const string ASResource::AS_LS_EQUAL = string("<=");
 const string ASResource::AS_LS_LS = string("<<");
+const string ASResource::AS_INDEX_ADD = string("+:");
+const string ASResource::AS_INDEX_MINUS = string("-:");
 
 const string ASResource::AS_AND = string("&&");
 const string ASResource::AS_OR = string("||");
