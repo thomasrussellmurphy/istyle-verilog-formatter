@@ -154,6 +154,8 @@ void ASFormatter::staticInit()
     operators.push_back(&AS_EQUAL);
     operators.push_back(&AS_NOT_EQUAL);
     operators.push_back(&AS_GR_EQUAL);
+    operators.push_back(&AS_INDEX_ADD);
+    operators.push_back(&AS_INDEX_MINUS);
 
     operators.push_back(&AS_GR_GR);
     operators.push_back(&AS_LS_EQUAL);
