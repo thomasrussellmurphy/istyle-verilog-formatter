@@ -79,7 +79,7 @@ class ASResource
         static const string AS_SWITCH, AS_DEFAULT;
 
         static const string AS_OPEN_BRACKET, AS_CLOSE_BRACKET;
-        static const string AS_OPEN_LINE_COMMENT, AS_OPEN_COMMENT, AS_CLOSE_COMMENT;
+        static const string AS_OPEN_LINE_COMMENT, AS_OPEN_COMMENT, AS_CLOSE_COMMENT, AS_OPEN_ATTRIBUTES, AS_CLOSE_ATTRIBUTES;
         //  process
 
         static const string PRO_CELLDEFINE, PRO_DEFAULT_NETTYPE, PRO_DEFINE, PRO_ELSE, PRO_ELSIF;

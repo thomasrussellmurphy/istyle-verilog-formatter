@@ -507,6 +507,23 @@ string ASFormatter::nextLine()
             }
         }
 
+        if (isSequenceReached(AS_OPEN_ATTRIBUTES))
+        {
+            appendSequence(AS_OPEN_ATTRIBUTES);
+            if (shouldPadOperators)
+                appendSpacePad();
+            goForward(1);
+            continue;
+        }
+        else if (isSequenceReached(AS_CLOSE_ATTRIBUTES))
+        {
+            if (shouldPadOperators)
+                appendSpacePad();
+            appendSequence(AS_CLOSE_ATTRIBUTES);
+            appendSpacePad();
+            goForward(1);
+            continue;
+        }
         //handle verilogBlock +
 
         if (currentChar == '{' )
