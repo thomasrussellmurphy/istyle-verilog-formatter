@@ -21,3 +21,26 @@ jobs:
       run: |
         docker run --rm -v $(pwd):/workdir -e CROSS_TRIPLE=$OS multiarch/crossbuild make TARGET=istyle-$OS
         ls -a $RELEASE_DIR
+    - name: publish
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        RELEASE_TAG="$(date +%y%m%d)"
+        curl -sL -XPOST -d '{"tag_name": "'$RELEASE_TAG'"}' \
+          -H "Authorization: Bearer $GITHUB_TOKEN" \
+          -H 'Content-Type: application/json' \
+          "https://api.github.com/repos/${GITHUB_REPOSITORY}/releases"
+        RELEASE_ID=$(curl -svL https://api.github.com/repos/${GITHUB_REPOSITORY}/releases/tags/$RELEASE_TAG | jq .id)
+        
+        if [[ $OS == "x86_64-w64-mingw32" ]]; then 
+          POSTFIX=".exe"
+        fi
+        cd $RELEASE_DIR
+        ls -a
+        for RELEASE_FILE in * ; do
+          curl -sL -XPOST -T ${RELEASE_FILE}* \
+            -H "Authorization: token $GITHUB_TOKEN" \
+            -H "Content-Type:application/octet-stream" \
+            "https://uploads.github.com/repos/${GITHUB_REPOSITORY}/releases/$RELEASE_ID/assets?&name=$RELEASE_FILE-$RELEASE_TAG$POSTFIX"
+        done
+      shell: bash
