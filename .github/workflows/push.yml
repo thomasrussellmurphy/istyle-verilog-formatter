@@ -1,0 +1,23 @@
+name: push to master
+
+on:
+  push:
+    branches:
+    - 'master'
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [x86_64-linux-gnu, arm-linux-gnueabihf, aarch64-linux-gnu, x86_64-w64-mingw32]
+    runs-on: ubuntu-latest
+    env:
+      OS: ${{ matrix.os }}
+      RELEASE_DIR: bin/release
+    steps:
+    - uses: actions/checkout@v1
+    - name: build
+      #https://github.com/multiarch/crossbuild
+      run: |
+        docker run --rm -v $(pwd):/workdir -e CROSS_TRIPLE=$OS multiarch/crossbuild make TARGET=istyle-$OS
+        ls -a $RELEASE_DIR
