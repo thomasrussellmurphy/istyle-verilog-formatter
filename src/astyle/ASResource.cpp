@@ -152,7 +152,7 @@ const string ASResource::AS_TABLE        = string("table"    );
 const string ASResource::AS_TASK         = string("task"     );
 const string ASResource::AS_SPECIFY      = string("specify"  );
 const string ASResource::AS_PRIMITIVE    = string("primitive");
-//const string ASResource::AS_MODULE       = string("module"   );
+const string ASResource::AS_MODULE       = string("module"   );
 const string ASResource::AS_BEGIN        = string("begin"    );
 
 const string ASResource::AS_ENDCASE      = string("endcase"       );
@@ -163,7 +163,7 @@ const string ASResource::AS_ENDTASK      = string("endtask"       );
 const string ASResource::AS_ENDTABLE     = string("endtable"      );
 const string ASResource::AS_ENDSPECIFY   = string("endspecify"    );
 const string ASResource::AS_ENDPRIMITIVE = string("endprimitive"  );
-//const string ASResource::AS_ENDMODULE    = string("endmodule"     );
+const string ASResource::AS_ENDMODULE    = string("endmodule"     );
 const string ASResource::AS_END          = string("end"           );
 
 const char   ASResource::PREPROCESSOR_CHAR ='`';

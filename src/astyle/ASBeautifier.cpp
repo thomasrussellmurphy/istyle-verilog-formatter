@@ -96,7 +96,7 @@ void ASBeautifier::initStatic()
     verilogBlockBegin.push_back(&AS_TASK      );
     verilogBlockBegin.push_back(&AS_SPECIFY   );
     verilogBlockBegin.push_back(&AS_PRIMITIVE );
-    //verilogBlockBegin.push_back(&AS_MODULE    );
+    verilogBlockBegin.push_back(&AS_MODULE    );
     verilogBlockBegin.push_back(&AS_BEGIN     );
 
     verilogBlockEnd.push_back(&AS_ENDCASE      );
@@ -107,7 +107,7 @@ void ASBeautifier::initStatic()
     verilogBlockEnd.push_back(&AS_ENDTABLE     );
     verilogBlockEnd.push_back(&AS_ENDSPECIFY   );
     verilogBlockEnd.push_back(&AS_ENDPRIMITIVE );
-    //verilogBlockEnd.push_back(&AS_ENDMODULE    );
+    verilogBlockEnd.push_back(&AS_ENDMODULE    );
     verilogBlockEnd.push_back(&AS_END          );
 
     preprocessorHeaders.push_back(&PRO_CELLDEFINE           );
